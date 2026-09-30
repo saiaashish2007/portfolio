@@ -3,7 +3,7 @@ import { profile } from '@/lib/site';
 
 export function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-teal-700">{children}</p>
+    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500">{children}</p>
   );
 }
 
@@ -45,7 +45,6 @@ export function ExternalLink({
 const NAV = [
   { href: '/#about', label: 'About' },
   { href: '/#projects', label: 'Projects' },
-  { href: '/#experience', label: 'Experience' },
   { href: '/#contact', label: 'Contact' },
 ];
 

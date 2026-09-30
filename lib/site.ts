@@ -4,8 +4,6 @@ export type Project = {
   slug: string;
   name: string;
   tagline: string;
-  context: string;
-  date: string;
   summary: string;
   problem: string;
   built: string[];
@@ -15,72 +13,26 @@ export type Project = {
   demoLogin?: { user: string; password: string };
 };
 
-export type Role = {
-  company: string;
-  title: string;
-  dates: string;
-  summary: string;
-};
-
 export const profile = {
   name: 'Sai Bharadwaj',
   school: 'Computer Science · University of Illinois Urbana-Champaign',
   graduation: 'Expected May 2028',
-  headline: 'I build AI systems that have to hold up on messy, real-world input.',
+  headline: 'Software engineer focused on applied AI and full-stack development.',
   about: [
-    "I'm a CS student at UIUC who likes owning a system end to end — the data pipeline, the model layer, and the interface someone actually uses. My work has spanned voice agents, retrieval and MCP tooling, multi-model LLM orchestration, clinical data, and quantitative finance.",
-    'Most of what I build sits in healthcare, law, and finance, where a good demo is not enough: the system has to be honest about uncertainty and keep working when the input is noisy. I’m looking for software engineering and AI/ML internships.',
+    'I am a Computer Science student at the University of Illinois Urbana-Champaign. I build end-to-end software, from data pipelines and model integrations to the interfaces people use, with a focus on voice agents, retrieval systems, and LLM orchestration.',
+    'My recent projects span healthcare, legal services, and financial markets. I am currently seeking software engineering and AI/ML internship opportunities.',
   ],
-  email: 'saib2@illinois.edu',
+  email: 'saiaashishb@gmail.com',
   github: 'https://github.com/saiaashish2007',
   linkedin: 'https://www.linkedin.com/in/sai-bharadwaj-0b3531277/',
   resume: '/Sai_Bharadwaj_Resume.pdf',
 };
-
-export const experience: Role[] = [
-  {
-    company: 'GenAIx',
-    title: 'Backend Engineering Intern',
-    dates: 'Jul 2026 – Present',
-    summary:
-      'Multi-model LLM orchestration across Claude and GPT with structured outputs, retry and fallback across providers, and usage instrumentation.',
-  },
-  {
-    company: 'PM Accelerator',
-    title: 'AI Engineering Intern',
-    dates: 'Jun – Aug 2026',
-    summary:
-      'An MCP-native context layer turning Slack, Gmail, and Notion threads into a queryable decision register, built on RAG pipelines.',
-  },
-  {
-    company: 'MascotGO',
-    title: 'Software Engineering Intern',
-    dates: 'Feb – Jun 2026',
-    summary:
-      'A multi-agent LangChain pipeline that generated 3,300+ branded images, with checkpointing, backoff, rate limiting, and cost tracking.',
-  },
-  {
-    company: 'UIUC Center for Health Informatics',
-    title: 'Undergraduate Researcher',
-    dates: 'Jan – May 2026',
-    summary:
-      'LLM pipelines that audit patient interview transcripts for clinical completeness and return structured feedback to providers.',
-  },
-  {
-    company: 'Harvard Spatial Data Lab',
-    title: 'Research Intern',
-    dates: 'Mar – Dec 2024',
-    summary: 'Geospatial and historical feature engineering for an ML model of crime patterns.',
-  },
-];
 
 export const projects: Project[] = [
   {
     slug: 'cadence',
     name: 'Cadence',
     tagline: 'Voice and message banking for anyone whose speech is at risk.',
-    context: 'Medplum Hackathon',
-    date: 'Aug 2026',
     summary:
       'Cadence records people saying the everyday phrases they will need while they can still speak, then uses those recordings to speak for them later — and helps caregivers understand speech that has become hard to follow.',
     problem:
@@ -114,8 +66,6 @@ export const projects: Project[] = [
     slug: 'firstcall',
     name: 'FirstCall',
     tagline: 'An AI voice agent that answers a law firm’s calls and qualifies the case.',
-    context: 'Hackathon',
-    date: 'May 2026',
     summary:
       'FirstCall picks up every inbound call to a personal-injury firm, runs the intake conversation, checks the statute of limitations mid-call, and hands the firm a structured, prioritized case file when the caller hangs up.',
     problem:
@@ -152,8 +102,6 @@ export const projects: Project[] = [
     slug: 'vetcomply',
     name: 'VetComply',
     tagline: 'Regulatory entity resolution for private-equity-backed veterinary roll-ups.',
-    context: 'Personal project',
-    date: '2026',
     summary:
       'VetComply takes the messy provider and clinic rosters that pile up after a veterinary acquisition and resolves them into canonical identities, exposed through an API, MCP tools for AI agents, and a human review console.',
     problem:
@@ -185,8 +133,6 @@ export const projects: Project[] = [
     slug: 'order-book-engine',
     name: 'Limit Order Book Prediction Engine',
     tagline: 'Short-horizon price direction prediction from live crypto order books.',
-    context: 'Personal project',
-    date: 'Mar – May 2026',
     summary:
       'An end-to-end system that ingests live Level 2 order book snapshots from Coinbase and Binance, engineers microstructure features, and predicts whether the mid-price moves up, down, or stays flat over the next few ticks.',
     problem:
@@ -210,38 +156,6 @@ export const projects: Project[] = [
       { group: 'Quality', items: ['pytest'] },
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/saiaashish2007/Personal-Projects' }],
-  },
-  {
-    slug: 'insider-alpha',
-    name: 'Insider Alpha',
-    tagline: 'An out-of-sample test of whether insider buying still predicts stock returns.',
-    context: 'Quantitative research',
-    date: '2026',
-    summary:
-      'A pre-registered replication of Cohen, Malloy & Pomorski’s “Decoding Inside Information” (Journal of Finance, 2012) on 2014–2025 data — entirely after the original sample — built as a reproducible Python pipeline with a static research dashboard.',
-    problem:
-      'The paper claims that open-market purchases by insiders who don’t trade on a predictable schedule predict returns. Most published anomalies decay after publication, so the real question is whether this one survives a decade later, measured with realistic costs and without tuning until something works.',
-    built: [
-      'Ingestion of the SEC’s bulk Form 3/4/5 archives into a 4.5-million-transaction table in about three minutes, instead of days against EDGAR’s rate limit.',
-      'A strictly point-in-time routine-vs-opportunistic classifier that labels 102,000 insiders in 1.5 seconds, validated against the Rule 10b5-1 flag it never sees.',
-      'Signal construction and Spearman IC analysis with Newey-West errors, behind a go/no-go gate written before any code.',
-      'A backtest with a transaction-cost model, Fama-French five-factor plus momentum attribution, randomization tests, and a deflated Sharpe ratio across 51 specifications.',
-      'A nine-page Next.js dashboard that reads schema-validated JSON artifacts, including a page on what didn’t work.',
-    ],
-    highlights: [
-      { value: '4.5M', label: 'SEC transactions parsed' },
-      { value: '144', label: 'monthly rebalances tested' },
-      { value: '−0.41', label: 'net Sharpe: the signal has decayed' },
-    ],
-    stack: [
-      { group: 'Research', items: ['Python', 'pandas', 'NumPy', 'SciPy', 'statsmodels', 'PyArrow'] },
-      { group: 'Data', items: ['SEC insider transaction datasets', 'yfinance'] },
-      { group: 'Dashboard', items: ['Next.js', 'React', 'Recharts', 'Tailwind CSS', 'AJV'] },
-      { group: 'Quality', items: ['pytest', 'Ruff'] },
-    ],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/saiaashish2007/Personal-Projects/tree/main/insider-alpha' },
-    ],
   },
 ];
 

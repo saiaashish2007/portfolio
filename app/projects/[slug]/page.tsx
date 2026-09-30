@@ -33,10 +33,10 @@ export default async function ProjectPage({ params }: Props) {
 
         <header className="rise mt-8">
           <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500">
-            {project.context} · {project.date}
+            Personal Project
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">{project.name}</h1>
-          <p className="mt-4 font-serif text-2xl italic leading-snug text-teal-700">{project.tagline}</p>
+          <p className="mt-4 text-xl leading-snug text-neutral-600">{project.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             {project.links.map((l, i) => (
               <ExternalLink key={l.href} href={l.href} primary={i === 0}>
@@ -76,7 +76,7 @@ export default async function ProjectPage({ params }: Props) {
           <ul className="mt-4 space-y-4">
             {project.built.map((b) => (
               <li key={b} className="flex gap-3 leading-relaxed text-neutral-700">
-                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-600" />
+                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-400" />
                 <span>{b}</span>
               </li>
             ))}
@@ -107,7 +107,7 @@ export default async function ProjectPage({ params }: Props) {
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500">Next project</p>
             <p className="mt-1 text-lg font-semibold">{next.name}</p>
           </div>
-          <span className="text-xl text-teal-700 transition-transform group-hover:translate-x-1">→</span>
+          <span className="text-xl text-neutral-900 transition-transform group-hover:translate-x-1">→</span>
         </Link>
       </main>
       <SiteFooter />
