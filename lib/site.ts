@@ -130,6 +130,38 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'volatility-risk-premium',
+    name: 'Timing the Volatility Risk Premium',
+    tagline: 'Delta-hedged S&P 500 straddles, timed with an XGBoost volatility forecast.',
+    summary:
+      'A research pipeline that sells the gap between the volatility S&P 500 options price in and the volatility that actually shows up, using Black-Scholes delta-hedged straddles, an XGBoost forecast of realized volatility to decide when to stand aside, and Monte Carlo to test whether the result is skill or luck.',
+    problem:
+      'Index options are usually priced for more volatility than the market delivers, because investors pay up for crash protection. Selling that insurance earns a steady premium until a crash wipes out years of it in a month. The question is whether a model can tell ahead of time when not to sell, and whether any improvement survives realistic costs and a proper out-of-sample test.',
+    built: [
+      'A free data pipeline (Yahoo Finance, Cboe, FRED) covering 1990 to today, with 18 features: HAR realized volatilities, Parkinson and Garman-Klass range estimators, downside semivariance, the VIX term structure, and VVIX.',
+      'Walk-forward forecasting with quarterly refits, purged training rows and an embargo, comparing HAR, HAR-X and an XGBoost model trained with a custom QLIKE objective on top of HAR-X.',
+      'A vectorized Black-Scholes engine that prices, marks and daily delta-hedges 21 overlapping short straddles, with option spread and hedging costs, tested against put-call parity and finite-difference Greeks.',
+      'A stationary block bootstrap for paired Sharpe and drawdown confidence intervals, and a Merton jump-diffusion stress test of the hedged trade.',
+      'A static Next.js dashboard showing 28 years of out-of-sample results, crash-by-crash performance, the cost and pricing assumptions, and the limitations.',
+    ],
+    highlights: [
+      { value: '0.94 vs 0.84', label: 'Sharpe, timed vs always selling' },
+      { value: '−13% vs −20%', label: 'max drawdown' },
+      { value: '28 years', label: 'walk-forward out of sample' },
+    ],
+    stack: [
+      { group: 'Modeling', items: ['Python', 'XGBoost', 'NumPy', 'pandas', 'SciPy'] },
+      { group: 'Quant methods', items: ['Black-Scholes', 'Delta hedging', 'Monte Carlo', 'Block bootstrap', 'HAR models'] },
+      { group: 'Data', items: ['Cboe VIX indices', 'Yahoo Finance', 'FRED'] },
+      { group: 'Interface', items: ['Next.js', 'TypeScript', 'Recharts', 'Tailwind CSS'] },
+      { group: 'Quality', items: ['pytest', 'ruff', 'uv'] },
+    ],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/saiaashish2007/Personal-Projects/tree/main/vol-premium' },
+      { label: 'Live dashboard', href: 'https://vol-premium.vercel.app' },
+    ],
+  },
+  {
     slug: 'order-book-engine',
     name: 'Limit Order Book Prediction Engine',
     tagline: 'Short-horizon price direction prediction from live crypto order books.',
